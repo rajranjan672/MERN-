@@ -2,32 +2,15 @@ const ProjectCollection = require("../models/project");
 
 exports.createProject = async( req, res, next) => {
 
-    // var user = new UserCollection({
-    //     title: req.body.title,
-    //     startingDate: req.body.startingDate,
-    //     description: req.body.description
-       
-    // });
-
-    // try {
-    //     doc = await user.save();
-    //     return res.status(201).json(doc);
-    // }
-    // catch(err) {
-    //     res.status(501).json(err)
-    // }
+   
      let response = [];
 
-     const createActionPlan = new ProjectCollection({
-        email: req.body.email,
+     const newProject = new ProjectCollection({
         title:req.body.title,
-        category: req.body.category,
-        method: req.body.method,
-        startingDate: req.body.startingDate,
         description: req.body.description
      });
 
-     await this.createProject.save((error, plans) => {
+     await this.newProject.save((error, plans) => {
          if(error) {
              response = {success: false, message: "something went wrong"};
          } else {
@@ -79,11 +62,7 @@ exports.findbyid = async(req,res) => {
 
 exports.editProject = async(req,res) => {
     var ap = {
-        email: req.body.email,
         title:req.body.title,
-        category: req.body.category,
-        method: req.body.method,
-        startingDate: req.body.startingDate,
         description: req.body.description
 
     };

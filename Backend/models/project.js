@@ -5,27 +5,12 @@ const projectSchema = mongoose.Schema({
     title: {
         type: String,
     },
-    email: {
-        type: String,
-    },
-    category: {
-        type: String,
-    },
-    method: {
-        type: String,
-    },
-    startingDate : {
-        type: String,
-    },
-    completionDate: {
-        type: String,
-    },
+   
+ 
     description: {
         type: String,
     },
-    photo: {
-        type: String
-    },
+   
    
 })
 
