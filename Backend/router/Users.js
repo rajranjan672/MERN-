@@ -12,8 +12,6 @@ router.post('/register',[
     // body('name').notEmpty().isAlphanumeric().isLength(3,20),
     body('email').isEmail(),
     body('password').isLength({min:8}),
-    body('country').notEmpty().isAlphanumeric().isLength(3,20),
-    body('state').notEmpty().isAlphanumeric().isLength(3,20),
 
 
 
@@ -41,8 +39,6 @@ router.post('/register',[
         name: trimmedName,
         email: email,
         password: secPassword,
-        country: req.body.country,
-        state: req.body.state,
        
         
 

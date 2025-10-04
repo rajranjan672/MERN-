@@ -17,47 +17,6 @@ function isValidUser(req, res, next) {
     else return res.status(401).json({message: 'Unauthorized Request'});
 }
 
-// const storage = multer.diskStorage({
-//     destination: function (Req, res, cb) {
-//         cb(null, "image");
-//     },
-//     filename: function (req, res, next) {
-//         const alloerdfileTypes = ["image/jpeg", "image/jpg", "image/png"]
-//         if(alloerdfileTypes.includes(file.mimetype)) {
-//             cb(null, true)
-//         } else {
-//             cb(null, false)
-//         }
-//     }
-
-    
-// })
-
-// let upload = multer({storage, fileFilter});
-
-// router.route("/createActionPlans").post(upload.single("photo"), (req,res) => {
-    // const title = req.body.title;
-    // const description = req.body.description; 
-    // const category = req.body.category; 
-    // const photo = req.body.photo;
-
-//     const newUserData = {
-//         title,
-//         description,
-//         category,
-//         photo,
-//     };
-//     const newUser =  new ActionPlanCollection(newData);
-
-//     newUser
-//     .save()
-//     .path(() => res.json("User Added"))
-//     .catch((err) => res.status(400).json("Error: " + err));
-
-// });
-
-
-
 const verifyToken = async (req, res, next) => {
     const token = req.cookies.access_token;
 
@@ -80,7 +39,7 @@ const verifyToken = async (req, res, next) => {
 
 
 router.get(
-    "/getProject", verifyToken,
+    "/getProject",
     ProjectController.getProject
 );
 

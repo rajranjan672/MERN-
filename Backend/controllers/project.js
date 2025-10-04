@@ -4,21 +4,26 @@ exports.createProject = async( req, res, next) => {
 
    
      let response = [];
-
+try {
      const newProject = new ProjectCollection({
         title:req.body.title,
         description: req.body.description
      });
 
-     await this.newProject.save((error, plans) => {
-         if(error) {
-             response = {success: false, message: "something went wrong"};
-         } else {
-             response =  success= true, plans= plans
-         }
-         return res.send(response)
-     });
-};
+    const savedProject = await newProject.save() 
+     return res.status(201).json({
+        success: true,
+        data: savedProject
+    });
+}catch (error) {
+    console.error(error);
+    return res.status(500).json({
+        success: false,
+        message: "Something went wrong"
+    });
+}
+}
+
 
 
 
@@ -79,7 +84,7 @@ exports.deleteProject = async(req, res, next) => {
     
     ProjectCollection.findByIdAndDelete((req.params.id), (err, doc) => {
         if(!err) {
-            res.send(doc);
+            res.send("deleted",doc);
         }
         else {
             console.log('error in delete: ' +JSON.stringify(err, undefined, 2));
